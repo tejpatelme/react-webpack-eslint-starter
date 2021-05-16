@@ -1,0 +1,12 @@
+{
+  "name": "react-webpack-eslint-starter",
+  "version": "1.0.0",
+  "description": "Initialize empty git repository",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Tej Patel",
+  "license": "MIT"
+}
