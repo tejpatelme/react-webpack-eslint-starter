@@ -22,7 +22,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
@@ -46,6 +46,10 @@ module.exports = {
     }),
     new MiniCssExtractPlugin(),
   ],
+
+  resolve: {
+    extensions: [".js", ".jsx"],
+  },
 
   devtool: "inline-source-map",
 
