@@ -1,8 +1,14 @@
 const path = require("path");
 const htmlWebpackPlugin = require("html-webpack-plugin");
 
+let mode = "development";
+
+if ((process.env.NODE_ENV = "production")) {
+  mode = "production";
+}
+
 module.exports = {
-  mode: "development",
+  mode: mode,
 
   entry: path.resolve(__dirname, "src", "index.js"),
 
@@ -12,10 +18,28 @@ module.exports = {
     clean: true,
   },
 
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+        },
+      },
+    ],
+  },
+
   plugins: [
     new htmlWebpackPlugin({
       title: "React Starter using Webpack",
       template: path.resolve(__dirname, "public", "index.html"),
     }),
   ],
+
+  devtool: "inline-source-map",
+
+  devServer: {
+    historyApiFallback: true,
+  },
 };
