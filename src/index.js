@@ -1,8 +1,12 @@
-import "./App.css";
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
 
-const consoleLog = () => {
-  const arr = [1, 2, 3, 4, 5];
-  arr.map((item) => console.log(item));
-};
+const root = document.getElementById("root");
 
-consoleLog();
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  root
+);
