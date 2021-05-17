@@ -1,5 +1,6 @@
 const path = require("path");
-const htmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 let mode = "development";
 
@@ -27,14 +28,19 @@ module.exports = {
           loader: "babel-loader",
         },
       },
+      {
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
     ],
   },
 
   plugins: [
-    new htmlWebpackPlugin({
+    new HtmlWebpackPlugin({
       title: "React Starter using Webpack",
       template: path.resolve(__dirname, "public", "index.html"),
     }),
+    new MiniCssExtractPlugin(),
   ],
 
   devtool: "inline-source-map",
