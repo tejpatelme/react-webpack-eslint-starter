@@ -2,11 +2,10 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-let mode = "development";
+let mode = process.env.NODE_ENV === "production" ? "production" : "development";
 
-if ((process.env.NODE_ENV = "production")) {
-  mode = "production";
-}
+//Temporary fix for live reloading bug in Webpack 5
+let target = process.env.NODE_ENV === "production" ? "browserslist" : "web";
 
 module.exports = {
   mode: mode,
@@ -69,9 +68,9 @@ module.exports = {
 
   devServer: {
     historyApiFallback: true,
-    contentBase: ["./src", "./public"],
+    contentBase: "./dist",
     hot: true,
   },
 
-  target: "web",
+  target: target,
 };
